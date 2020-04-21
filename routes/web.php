@@ -14,13 +14,20 @@ use MarcReichel\IGDBLaravel\Models\Game;
 |
 */
 
-Route::get('/', 'GameController@index')->name('list_games');
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+
+
+Route::get('/my_games', 'GameController@index')->name('list_games');
 Route::get('/add_game', 'GameController@create')->name('create_game');
 Route::post('/add_game', 'GameController@store')->name('store_game');
 
+
 Route::get('/see_games', function () {
-    return view('welcome');
+    return view('game.cards');
 })->name('see_games');
+
 
 Route::get('/get_games', 'GameController@get_games')->name('get_games');
 

@@ -23,7 +23,8 @@ class GameController extends Controller
         return [
             'name.required' => 'Gelieve de titel van een spel op te geven',
             'score.required' => 'Gelieve het spel een persoonlijke score te geven',
-            'platform.required' => 'Gelieve een (primair) platform voor jou spelervaring te selecteren',
+            'platform.required' => 'Gelieve een (primair) platform voor jouw spelervaring te selecteren',
+            'year.required' => 'Gelieve het jaar van uitgave mee te geven',
         ];
     }
 
@@ -32,7 +33,8 @@ class GameController extends Controller
         return [
             'name' => 'required',
             'score'=> 'required',
-            'platform'=> 'required'
+            'platform'=> 'required',
+            'year'=>'required',
         ];
     }
 
@@ -67,10 +69,11 @@ class GameController extends Controller
                 'name' =>request('name'),
                 'owned_platform_id'=>$plat_id,
                 'art_url'=>request('art_url'),
+                'year'=>request('year'),
                 'score'=>request('score')
             ]);
 
-            return redirect('/see_games');
+            return redirect('/my_games');
 
             /*
              $game = Game::where('name', $request->name)->get();
@@ -86,7 +89,7 @@ class GameController extends Controller
         $info = [];
         foreach ($owned_games as $owned){
             $item = [];
-            $games = Game::where('name', $owned->name)->with(['cover','involved_companies','franchise','genres'])->get();
+            $games = Game::where('name', $owned->name)->whereYear('first_release_date', '=',$owned->year)->with(['cover','involved_companies','franchise','genres'])->get();
             $game = $games[0];
             foreach ( $games as $potential_game)
                 if(count($potential_game->attributes)>count($game->attributes)){

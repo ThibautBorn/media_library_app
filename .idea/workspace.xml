@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fdb0b2f-6237-47e4-8fc2-2042b3a22f84" name="Default Changelist" comment="" />
+    <list default="true" id="0fdb0b2f-6237-47e4-8fc2-2042b3a22f84" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/js/modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/game/cards.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GameController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GameController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Owned_Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Owned_Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_15_133208_create_owned_games_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_15_133208_create_owned_games_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/game/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/game/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/game/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/game/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +32,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -119,6 +135,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1aZuj5ISSAJh4AFFSKeIUgbmaZJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -164,6 +181,8 @@
       <workItem from="1587050112041" duration="5737000" />
       <workItem from="1587107361211" duration="19568000" />
       <workItem from="1587367013882" duration="6711000" />
+      <workItem from="1587453209370" duration="11156000" />
+      <workItem from="1587470677620" duration="987000" />
     </task>
     <servers />
   </component>
@@ -183,10 +202,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="365" y="155" key="NewPhpClassDialog/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1587039709163" />
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1587367153347">
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1587470727692">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1587367153347" />
+    <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1587470727692" />
     <state x="337" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587021118135" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1587037818580">
       <screen x="0" y="0" width="1280" height="680" />

@@ -17,6 +17,12 @@
                 @if ($errors->has('name')) <p style="color:darkred;font-size:80%;" >{{ $errors->first('name') }}</p> @endif
             </div>
 
+            <div class="form-group @if ($errors->has('year')) has-danger @endif">
+                <label for="year" class="form-control-label" > jaar van uitgave</label><br>
+                <input type="number" class="form-control form-control-danger{{ $errors->has('year') ? ' is-invalid' : '' }}"name="year" value="{{old('year')}}">
+                @if ($errors->has('year')) <p style="color:darkred;font-size:80%;" >{{ $errors->first('year') }}</p> @endif
+            </div>
+
             <div class="form-group @if ($errors->has('platform')) has-danger @endif">
                 <label for="platform" class="form-control-label" > Kies een (primaire) console voor het spel</label><br>
                 <select name="platform" class="form-control" style="width:250px">

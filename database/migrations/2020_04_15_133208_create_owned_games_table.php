@@ -16,8 +16,10 @@ class CreateOwnedGamesTable extends Migration
         Schema::create('owned_games', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->double('score');
+            $table->double('score')->nullable();
+            $table->integer('year');
             $table->string('art_url');
+            $table->boolean('on_wishlist')->default(0);
             $table->bigInteger('owned_platform_id')->unsigned();
             $table->foreign('owned_platform_id')->references('id')->on('owned_platforms')->onDelete('cascade');
             $table->timestamps();
