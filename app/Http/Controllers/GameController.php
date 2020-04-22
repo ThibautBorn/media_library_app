@@ -158,56 +158,6 @@ class GameController extends Controller
         //dump($wishlist);
         return $wishlist;
 
-
-        /*
-        foreach ($wanted_games as $owned) {
-            $games = Game::where('name', $owned->name)->whereYear('first_release_date', '=',$owned->year)->with(['cover','involved_companies','franchise','genres'])->get();
-
-            $game = $games[0];
-            dump($game);
-        }*/
-
-        //return $info;
-        /*
-        $info = [];
-        foreach ($wanted_games as $owned){
-            $item = [];
-            $games = Game::where('name', $owned->name)->whereYear('first_release_date', '=',$owned->year)->with(['cover','involved_companies','franchise','genres'])->get();
-            $game = $games[0];
-            foreach ( $games as $potential_game)
-                if(count($potential_game->attributes)>count($game->attributes)){
-                    $game = $potential_game;
-                }
-            $game->attributes["total_rating"] = intval($game->attributes["total_rating"]);
-            $game->attributes["myScore"] = $owned->score;
-            $game->attributes["art_url"] = $owned->art_url;
-            $release_date = ReleaseDate::where('game','=', strval($game->attributes["id"]))->first()->attributes["y"];
-            $game->attributes["release_date"] = $release_date;
-            $game->attributes["platform"] = Owned_platform::find($owned->owned_platform_id)->name;
-
-            $developer = Company::find($game->involved_companies->where('developer','=','true')->first()->attributes["company"]);
-            $publisher = Company::find($game->involved_companies->where('publisher','=','true')->first()->attributes["company"]);
-            $screenshots = Screenshot::where('game','=', strval($game->attributes["id"]))->get();
-
-            $item['game'] = $game;
-            $item['developer'] = $developer;
-            $item['publisher'] = $publisher;
-
-            $number_screenshots = count($screenshots)-1;
-            $firstShot = rand(0 , $number_screenshots );
-            $secondShot = rand(0 , $number_screenshots );
-            while($secondShot === $firstShot){
-                $secondShot = rand(0 , $number_screenshots );
-            }
-            $item['screenshot1'] = $screenshots[$firstShot];
-            $item['screenshot2'] = $screenshots[$secondShot];
-
-
-            array_push($info,$item);
-        }
-        //dump($info);
-        return $info;
-        */
     }
 
 }
