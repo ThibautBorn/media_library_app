@@ -20,15 +20,15 @@
                 <div class="message-body">
                     <h3>Bugs</h3>
                     <ul>
-                        <li> - my_list werkt pas correct door return en forward te doen, refreshen helpt ook niet</li>
+                        <li> navbar werkt nog niet juist (qua layout & functionaliteit)</li>
                     </ul>
                     <br>
                     <h3>TO DO</h3>
                     <ul>
                         <li> - implementeren van wishlist functionaliteit</li>
                         <li> - implementeren van bewerk & verwijder functionaliteit</li>
+                        <li> - implementeren van play_list</li>
                     </ul>
-
                 </div>
             </article>
 

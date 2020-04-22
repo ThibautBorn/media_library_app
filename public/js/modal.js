@@ -135,7 +135,7 @@ Vue.component('game-table', {
 
     template: `
 <div>
-<button @click="activateData">avtiveer datatables</button>
+<button @click="activateData">activeer datatables</button>
 <table id="tabel-games" class="display">
         <thead>
         <tr>

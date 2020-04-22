@@ -34,6 +34,9 @@
                 @if ($errors->has('platform')) <p style="color:darkred;font-size:80%;" >{{ $errors->first('platform') }}</p> @endif
             </div>
 
+            <input type="checkbox" name="on_wishlist" value="1">
+            <label for="on_wishlist"> Moet dit spel op de wishlist komen?</label><br>
+
             <div class="form-group @if ($errors->has('score')) has-danger @endif">
                 <label for="score" class="form-control-label">score</label>
                 <input type="double" class="form-control form-control-danger{{ $errors->has('score') ? ' is-invalid' : '' }}"name="score" value="{{old('score')}}">

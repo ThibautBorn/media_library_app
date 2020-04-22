@@ -24,10 +24,13 @@ Route::get('/add_game', 'GameController@create')->name('create_game');
 Route::post('/add_game', 'GameController@store')->name('store_game');
 
 
+Route::get('/my_wishlist', 'GameController@index_wishlist')->name('wishlist_games');
+
 Route::get('/see_games', function () {
     return view('game.cards');
 })->name('see_games');
 
 
 Route::get('/get_games', 'GameController@get_games')->name('get_games');
+Route::get('/get_wishlist', 'GameController@get_wishlist')->name('get_wishlist');
 

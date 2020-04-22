@@ -22,7 +22,6 @@ class GameController extends Controller
     public static function game_messages() {
         return [
             'name.required' => 'Gelieve de titel van een spel op te geven',
-            'score.required' => 'Gelieve het spel een persoonlijke score te geven',
             'platform.required' => 'Gelieve een (primair) platform voor jouw spelervaring te selecteren',
             'year.required' => 'Gelieve het jaar van uitgave mee te geven',
         ];
@@ -32,7 +31,6 @@ class GameController extends Controller
     {
         return [
             'name' => 'required',
-            'score'=> 'required',
             'platform'=> 'required',
             'year'=>'required',
         ];
@@ -44,6 +42,10 @@ class GameController extends Controller
         return view('game.index')->with('owned_games',$owned_games)->with('platforms',$platforms);
     }
 
+    public function index_wishlist(Request $request){
+        $wishlist = $this->get_wishlist();
+        return view('game.wishlist')->with('wishlist',$wishlist);
+    }
 
     public function create(Request $request){
         $platforms = Owned_platform::all();
@@ -63,17 +65,27 @@ class GameController extends Controller
         } else {
             //dump(intval($request->platform));
             $plat_id = intval(request('platform'));
-            dump(intval($plat_id));
+            $wish = intval(request('on_wishlist'));
+
 
             $new_game = Owned_Game::create([
                 'name' =>request('name'),
                 'owned_platform_id'=>$plat_id,
                 'art_url'=>request('art_url'),
                 'year'=>request('year'),
+                'on_wishlist'=>$wish,
                 'score'=>request('score')
             ]);
 
-            return redirect('/my_games');
+
+            if ($wish === 1){
+                return redirect('/my_wishlist');
+            } else {
+                return redirect('/my_games');
+            }
+
+
+
 
             /*
              $game = Game::where('name', $request->name)->get();
@@ -85,7 +97,7 @@ class GameController extends Controller
     }
 
     public function get_games(){
-        $owned_games = Owned_game::all();
+        $owned_games = Owned_game::where('on_wishlist','=',0)->get();
         $info = [];
         foreach ($owned_games as $owned){
             $item = [];
@@ -124,6 +136,78 @@ class GameController extends Controller
         }
         //dump($info);
         return $info;
+    }
+
+    public function get_wishlist(){
+        $wanted_games = Owned_game::where('on_wishlist','=',1)->get();
+        $wishlist = [];
+
+        foreach ($wanted_games as $owned){
+            $games = Game::where('name', $owned->name)->whereYear('first_release_date', '=',$owned->year)->with(['cover','involved_companies','franchise','genres'])->get();
+            $game = $games[0];
+            foreach ( $games as $potential_game)
+                if(count($potential_game->attributes)>count($game->attributes)){
+                    $game = $potential_game;
+                }
+            $release_date = ReleaseDate::where('game','=', strval($game->attributes["id"]))->first()->attributes["y"];
+            $game->attributes["release_date"] = $release_date;
+            $game->attributes["platform"] = Owned_platform::find($owned->owned_platform_id)->name;
+
+            array_push($wishlist,$game);
+        }
+        //dump($wishlist);
+        return $wishlist;
+
+
+        /*
+        foreach ($wanted_games as $owned) {
+            $games = Game::where('name', $owned->name)->whereYear('first_release_date', '=',$owned->year)->with(['cover','involved_companies','franchise','genres'])->get();
+
+            $game = $games[0];
+            dump($game);
+        }*/
+
+        //return $info;
+        /*
+        $info = [];
+        foreach ($wanted_games as $owned){
+            $item = [];
+            $games = Game::where('name', $owned->name)->whereYear('first_release_date', '=',$owned->year)->with(['cover','involved_companies','franchise','genres'])->get();
+            $game = $games[0];
+            foreach ( $games as $potential_game)
+                if(count($potential_game->attributes)>count($game->attributes)){
+                    $game = $potential_game;
+                }
+            $game->attributes["total_rating"] = intval($game->attributes["total_rating"]);
+            $game->attributes["myScore"] = $owned->score;
+            $game->attributes["art_url"] = $owned->art_url;
+            $release_date = ReleaseDate::where('game','=', strval($game->attributes["id"]))->first()->attributes["y"];
+            $game->attributes["release_date"] = $release_date;
+            $game->attributes["platform"] = Owned_platform::find($owned->owned_platform_id)->name;
+
+            $developer = Company::find($game->involved_companies->where('developer','=','true')->first()->attributes["company"]);
+            $publisher = Company::find($game->involved_companies->where('publisher','=','true')->first()->attributes["company"]);
+            $screenshots = Screenshot::where('game','=', strval($game->attributes["id"]))->get();
+
+            $item['game'] = $game;
+            $item['developer'] = $developer;
+            $item['publisher'] = $publisher;
+
+            $number_screenshots = count($screenshots)-1;
+            $firstShot = rand(0 , $number_screenshots );
+            $secondShot = rand(0 , $number_screenshots );
+            while($secondShot === $firstShot){
+                $secondShot = rand(0 , $number_screenshots );
+            }
+            $item['screenshot1'] = $screenshots[$firstShot];
+            $item['screenshot2'] = $screenshots[$secondShot];
+
+
+            array_push($info,$item);
+        }
+        //dump($info);
+        return $info;
+        */
     }
 
 }
