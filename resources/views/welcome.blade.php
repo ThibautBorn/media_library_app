@@ -20,14 +20,15 @@
                 <div class="message-body">
                     <h3>Bugs</h3>
                     <ul>
-                        <li> navbar werkt nog niet juist (qua layout & functionaliteit)</li>
+                        <li> - onbestaande games toevoegen blokeert werking app</li>
+                        <li> - promotie naar 'in bezit' crashed wanneer als game nog niet uit is.</li>
                     </ul>
                     <br>
                     <h3>TO DO</h3>
                     <ul>
-                        <li> - implementeren van wishlist functionaliteit</li>
                         <li> - implementeren van bewerk & verwijder functionaliteit</li>
-                        <li> - implementeren van play_list</li>
+                        <li> - verbeteren van de layout...</li>
+                        <li> - implementeren van play_list (?)</li>
                     </ul>
                 </div>
             </article>
