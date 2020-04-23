@@ -34,20 +34,34 @@
                 @if ($errors->has('platform')) <p style="color:darkred;font-size:80%;" >{{ $errors->first('platform') }}</p> @endif
             </div>
 
-            <input type="checkbox" name="on_wishlist" value="1">
+            <input type="checkbox" id="wishCheck" name="on_wishlist" value="1" onclick="myFunction()" checked>
             <label for="on_wishlist"> Moet dit spel op de wishlist komen?</label><br>
 
-            <div class="form-group @if ($errors->has('score')) has-danger @endif">
-                <label for="score" class="form-control-label">score</label>
-                <input type="double" class="form-control form-control-danger{{ $errors->has('score') ? ' is-invalid' : '' }}"name="score" value="{{old('score')}}">
-                @if ($errors->has('score')) <p style="color:darkred;font-size:80%;" >{{ $errors->first('score') }}</p> @endif
+            <div id="text" style="display:none">
+                <div class="form-group @if ($errors->has('score')) has-danger @endif">
+                    <label for="score" class="form-control-label">score</label>
+                    <input type="double" class="form-control form-control-danger{{ $errors->has('score') ? ' is-invalid' : '' }}"name="score" value="{{old('score')}}">
+                    @if ($errors->has('score')) <p style="color:darkred;font-size:80%;" >{{ $errors->first('score') }}</p> @endif
+                </div>
+
+                <div class="form-group @if ($errors->has('art_url')) has-danger @endif">
+                    <label for="art_url" class="form-control-label">link naar de gewenste omslagfoto</label>
+                    <input type="text" class="form-control form-control-danger{{ $errors->has('art_url') ? ' is-invalid' : '' }}"name="art_url" value="{{old('art_url')}}">
+                    @if ($errors->has('art_url')) <p style="color:darkred;font-size:80%;" >{{ $errors->first('art_url') }}</p> @endif
+                </div>
             </div>
 
-            <div class="form-group @if ($errors->has('art_url')) has-danger @endif">
-                <label for="art_url" class="form-control-label">link naar de gewenste omslagfoto</label>
-                <input type="text" class="form-control form-control-danger{{ $errors->has('art_url') ? ' is-invalid' : '' }}"name="art_url" value="{{old('art_url')}}">
-                @if ($errors->has('art_url')) <p style="color:darkred;font-size:80%;" >{{ $errors->first('art_url') }}</p> @endif
-            </div>
+            <script>
+                function myFunction() {
+                    var checkBox = document.getElementById("wishCheck");
+                    var text = document.getElementById("text");
+                    if (checkBox.checked == true){
+                        text.style.display = "none";
+                    } else {
+                        text.style.display = "block";
+                    }
+                }
+            </script>
 
             <button class="btn btn-primary" name="submit"  value="save">sla op</button><br>
         </form>

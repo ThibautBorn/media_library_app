@@ -17,9 +17,9 @@
                     <td>{{substr(($game->attributes["first_release_date"]),0,4)}}</td>
                     <td><a href={{$game->attributes['url']}}>{{$game->attributes["name"]}}</a></td>
                     <td>
-                        <form action="" method="GET">
+                        <form action="{{ route('promote_game') }}" method="GET">
                             @csrf
-                            <input name="id" type="hidden" value="{{$game->attributes["name"]}}">
+                            <input name="name" type="hidden" value="{{$game->attributes["name"]}}">
                             <button type="submit" class="btn btn-info" title="view_company">upgrade <i class="material-icons">games</i></button>
                         </form>
                     </td>

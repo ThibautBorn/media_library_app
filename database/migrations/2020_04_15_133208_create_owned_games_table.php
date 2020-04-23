@@ -18,7 +18,7 @@ class CreateOwnedGamesTable extends Migration
             $table->string('name');
             $table->double('score')->nullable();
             $table->integer('year');
-            $table->string('art_url');
+            $table->string('art_url')->nullable();
             $table->boolean('on_wishlist')->default(0);
             $table->bigInteger('owned_platform_id')->unsigned();
             $table->foreign('owned_platform_id')->references('id')->on('owned_platforms')->onDelete('cascade');

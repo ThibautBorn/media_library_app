@@ -52,9 +52,14 @@ class GameController extends Controller
         return view('game.create')->with('platforms',$platforms);
     }
 
+    public function promote(Request $request){
+        $name = $request->name;
+        $game = Owned_Game::where('name','=',$name)->firstorfail();
+
+        return view('game.promotion')->with('game',$game);
+    }
+
     public function store(Request $request){
-
-
         $messages = GameController::game_messages();
         $rules = GameController::game_rules();
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -93,6 +98,24 @@ class GameController extends Controller
              */
         }
 
+
+    }
+
+    public function promote_to_owned(Request $request){
+        dump($request->id);
+
+        $game = Owned_Game::find($request->id);
+        dump($game);
+
+
+        $game->art_url = $request->art_url;
+        $game->on_wishlist = 0;
+        $game->score = $request->score;
+
+        $game->save();
+
+
+        return redirect('/my_games');
 
     }
 
