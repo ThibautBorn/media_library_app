@@ -135,7 +135,7 @@ Vue.component('game-table', {
 
     template: `
 <div>
-<button @click="activateData">activeer datatables</button>
+<button id="DataTableButton" @click="activateData">activeer datatables</button>
 <table id="tabel-games" class="display">
         <thead>
         <tr>
@@ -160,6 +160,9 @@ Vue.component('game-table', {
             $(document).ready(function() {
                 $('#tabel-games').DataTable();
             } );
+
+            var knop = document.getElementById("DataTableButton");
+            knop.style.display = "none";
         }
     },
 
